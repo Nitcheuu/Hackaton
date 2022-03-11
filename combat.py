@@ -6,6 +6,7 @@ from menu import Menu
 from chatBox import ChatBox
 from pygame.locals import *
 from time import sleep
+from identification import Identification
 pg.init()
 
 
@@ -30,6 +31,8 @@ class Combat:
         self.fin = False
 
         self.chatbox = ChatBox()
+
+
 
 
 
