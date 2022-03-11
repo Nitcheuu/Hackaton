@@ -1,5 +1,7 @@
 import pygame as pg
 from joueur import Joueur
+from pokemon import Pokemon
+from barrevie import BarreVie
 pg.init()
 
 
@@ -12,6 +14,11 @@ class Combat:
         self.ecran = ecran
         # Définition du joueur
         self.joueur = joueur
+        # Définition de l'ennemi
+        self.ennemi = Pokemon("", "", ennemi=True)
+        # Définition barre de vie du joeuur
+        self.barre_joueur = BarreVie(self.joueur.pokemon_actif, (100, 300), ecran, 350)
+
 
 
 
@@ -19,3 +26,6 @@ class Combat:
     def maj(self):
         self.ecran.blit(self.fond, (0, 0))
         self.ecran.blit(self.joueur.pokemon_actif.sprite, (100, 310))
+        self.ecran.blit(self.ennemi.sprite, (650, 140))
+        self.barre_joueur.maj()
+
