@@ -3,6 +3,7 @@ from joueur import Joueur
 from pokemon import Pokemon
 from barrevie import BarreVie
 from menu import Menu
+from chatBox import ChatBox
 pg.init()
 
 
@@ -26,6 +27,8 @@ class Combat:
 
         self.fin = False
 
+        self.chatbox = ChatBox()
+
 
 
 
@@ -35,8 +38,25 @@ class Combat:
         self.ecran.blit(self.joueur.pokemon_actif.sprite, (100, 310))
         self.ecran.blit(self.ennemi.sprite, (650, 140))
         self.menu.choix(self.ecran)
+        self.chatbox.textBox1(self.ecran)
         self.barre_joueur.maj()
         self.barre_ennemi.maj()
+
+
+    def lancer(self):
+        while not self.fin:
+            print("boucle")
+            self.maj()
+            self.choisir()
+
+
+    def choisir(self):
+        while True:
+            self.maj()
+            for event in pg.event.get():
+                if event.type == pg.KEYDOWN and event.key == K_a:
+                    print("a")
+                    return
 
 
 

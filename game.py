@@ -1,5 +1,6 @@
 import pygame
 import pygame as pg
+
 from combat import Combat
 from joueur import Joueur
 
@@ -30,8 +31,9 @@ class Game:
         combat = Combat(1, self.ecran, self.joueur)
         while self.jeu_en_cours:
             self.ecran.fill((255, 255, 255))
-            combat.maj()
+            combat.lancer()
             pg.display.flip()
+
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.jeu_en_cours = False
