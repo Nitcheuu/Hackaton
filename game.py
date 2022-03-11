@@ -1,8 +1,8 @@
 import pygame
 import pygame as pg
+from chatBox import ChatBox
 from combat import Combat
 from joueur import Joueur
-
 
 class Game:
 
@@ -29,10 +29,13 @@ class Game:
     def demarrer(self):
 
         combat = Combat(1, self.ecran, self.joueur)
+        chatBox = ChatBox()
         while self.jeu_en_cours:
             self.ecran.fill((255, 255, 255))
             combat.maj()
+            chatBox.textBox1(self.ecran)
             pg.display.flip()
+
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.jeu_en_cours = False
