@@ -7,6 +7,7 @@ from chatBox import ChatBox
 from pygame.locals import *
 from time import sleep
 from identification import Identification
+import random
 pg.init()
 
 
@@ -34,6 +35,8 @@ class Combat:
 
         self.id_pokemon = 0
 
+        self.action_bruit = pg.mixer.Sound("data/musiques/sounds/action.mp3")
+
 
 
 
@@ -51,6 +54,8 @@ class Combat:
 
 
     def lancer(self):
+        pg.mixer.music.load(f"data/musiques/fight/musique{random.randint(1, 3)}.mp3")
+        pg.mixer.music.play(-1)
         while not self.fin:
             self.chatbox.textBox1(self.ecran)
             choix = self.choisir()
@@ -61,6 +66,8 @@ class Combat:
             if self.ennemi.ko:
                 self.fin = True
 
+        return self.ennemi
+
     def changer(self):
         if self.id_pokemon < len(self.joueur.pokemons) - 1:
             self.id_pokemon += 1
@@ -68,6 +75,8 @@ class Combat:
             self.id_pokemon = 0
 
         self.joueur.pokemon_actif = self.joueur.pokemons[self.id_pokemon]
+
+        self.barre_joueur = BarreVie(self.joueur.pokemon_actif, (20, 250), self.ecran, 350)
 
         pg.display.flip()
         self.maj()
@@ -106,7 +115,7 @@ class Combat:
             self.chatbox.textAttack(self.ecran, self.ennemi.nom, "attaque")
             pg.display.flip()
             sleep(1)
-            if self.joueur.pokemon_actif.statVieActuel:
+            if self.joueur.pokemon_actif.statVieActuel > 0:
                 self.joueur.pokemon_actif.attaquer(self.ennemi)
                 pg.display.flip()
                 self.chatbox.textAttack(self.ecran, self.joueur.pokemon_actif.nom, "attaque")
@@ -132,6 +141,7 @@ class Combat:
                 if event.type == QUIT:
                     pg.quit()
                 if event.type == pg.KEYDOWN and (event.key == K_a or event.key == K_b):
+                    self.action_bruit.play()
                     return event.key
 
 

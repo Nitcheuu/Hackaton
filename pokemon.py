@@ -17,7 +17,7 @@ class Pokemon:
     dico : dict
 
 
-    def __init__(self,identifiant, nom , attaques, ennemi=False ):
+    def __init__(self,identifiant, nom , attaques, ennemi=False):
         if ennemi:
             self.nom = "???"
             self.type = "normal"
@@ -27,9 +27,11 @@ class Pokemon:
             self.statDefence = random.randrange(65, 75)
             self.statVitesse = random.randrange(61, 71)
             liste = os.listdir("./data/hackathon_data/detection_yaourt_dessus")
-            self.sprite = pg.image.load(f"data/hackathon_data/detection_yaourt_dessus/{liste[random.randint(0, len(liste) - 1)]}")
+            self.nom_fichier = liste[random.randint(0, len(liste) - 1)]
+            self.sprite = pg.image.load(f"data/hackathon_data/detection_yaourt_dessus/{self.nom_fichier}")
             self.sprite = pg.transform.scale(self.sprite, (280, 200))
             print(liste)
+
         else:
             with open(f"data/pokemons/{identifiant}_{nom}/data.json", "r") as pokemon_data:
                 self.dico = json.load(pokemon_data)
@@ -56,4 +58,5 @@ class Pokemon:
             pokemon_ennemi.statVieActuel = pokemon_ennemi.statVieActuel - self.statAttaque // 2
 
     def KO(self):
-        self.sprite = pg.transform.scale(self.sprite, (0, 0))
+        #self.sprite = pg.transform.scale(self.sprite, (0, 0))
+        pass
