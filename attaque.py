@@ -8,13 +8,14 @@ class Attaque:
     precision : int
 
     def __init__(self, nom):
-        dico = json.loads(f"data/moves/{nom}.json")
-        self.type = dico['type']['name']
-        self.attaque = dico['power']
+        with open(f"data/moves/{nom}.json", "r") as pokemon_data:
+            self.dico = json.load(pokemon_data)
+        self.type = self.dico['type']['name']
+        self.attaque = self.dico['power']
 
-        if dico['accuracy'] is None:
+        if self.dico['accuracy'] is None:
             self.precision = 100
         else:
-            self.precision = dico['accuracy']
+            self.precision = self.dico['accuracy']
 
-        self.nomAttaque = dico['name']
+        self.nomAttaque = self.dico['name']

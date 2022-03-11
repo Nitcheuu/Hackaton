@@ -17,7 +17,7 @@ class Pokemon:
     dico : dict
 
 
-    def __init__(self,identifiant, nom , ennemi=False ):
+    def __init__(self,identifiant, nom , attaques, ennemi=False ):
         if ennemi:
             self.nom = "???"
             self.type = "normal"
@@ -42,4 +42,6 @@ class Pokemon:
             self.statVitesse = self.dico['stats'][5]['base_stat']
             self.sprite = pg.image.load(f"data/pokemons/{identifiant}_{nom}/back_default.png")
             self.sprite = pg.transform.scale(self.sprite, (300, 300))
-
+            self.attaques = []
+            for attaque in attaques:
+                self.attaques.append(Attaque(attaque))

@@ -3,7 +3,6 @@ import pygame as pg
 from combat import Combat
 from joueur import Joueur
 
-
 class Game:
 
     TAILLE_ECRAN : tuple
@@ -19,7 +18,7 @@ class Game:
         # Définition du nombre de FPS
         self.FPS = FPS
         # Définition du joueur
-        self.joueur = Joueur(["9_blastoise", "3_venusaur", "6_charizard", "25_pikachu"])
+        self.joueur = Joueur(["6_charizard", "3_venusaur", "9_blastoise", "25_pikachu"], [["flamethrower", "double-hit"], ["energy-ball", "double-hit"], ["flamethrower", "double-hit"], ["thunder", "double-hit"],])
         # Défintion de la fenetre du jeu
         self.ecran = pg.display.set_mode(self.TAILLE_ECRAN)
         # Variable qui permet de savoir si la fenetre est active ou non
