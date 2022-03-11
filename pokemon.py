@@ -23,7 +23,7 @@ class Pokemon:
             self.type = "normal"
             self.statVie = random.randrange(50, 70)
             self.statVieActuel = self.statVie
-            self.statAttaque = random.randrange(70, 80)
+            self.statAttaque = random.randrange(40, 50)
             self.statDefence = random.randrange(65, 75)
             self.statVitesse = random.randrange(61, 71)
             liste = os.listdir("./data/hackathon_data/detection_yaourt_dessus")
@@ -46,9 +46,14 @@ class Pokemon:
             for attaque in attaques:
                 self.attaques.append(Attaque(attaque))
 
+        self.ko = False
+
 
     def attaquer(self, pokemon_ennemi):
         if pokemon_ennemi.statVieActuel - self.statAttaque // 2 < 0:
             pokemon_ennemi.statVieActuel = 0
         else:
             pokemon_ennemi.statVieActuel = pokemon_ennemi.statVieActuel - self.statAttaque // 2
+
+    def KO(self):
+        self.sprite = pg.transform.scale(self.sprite, (0, 0))
