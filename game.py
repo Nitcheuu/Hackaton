@@ -32,8 +32,8 @@ class Game:
         while self.jeu_en_cours:
             self.ecran.fill((255, 255, 255))
             combat.lancer()
+            print("principal")
             pg.display.flip()
-
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.jeu_en_cours = False

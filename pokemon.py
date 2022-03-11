@@ -45,3 +45,10 @@ class Pokemon:
             self.attaques = []
             for attaque in attaques:
                 self.attaques.append(Attaque(attaque))
+
+
+    def attaquer(self, pokemon_ennemi):
+        if pokemon_ennemi.statVieActuel - self.statAttaque // 2 < 0:
+            pokemon_ennemi.statVieActuel = 0
+        else:
+            pokemon_ennemi.statVieActuel = pokemon_ennemi.statVieActuel - self.statAttaque // 2

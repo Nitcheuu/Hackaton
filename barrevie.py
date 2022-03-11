@@ -18,5 +18,5 @@ class BarreVie:
         self.ecran.blit(self.font.render(self.pokemon.nom, True, (0, 0, 0)), (self.x_y[0], self.x_y[1] - 60))
         self.ecran.blit(self.font.render(f"{self.pokemon.statVieActuel} / {self.pokemon.statVie}", True, (0, 0, 0)), (self.x_y[0], self.x_y[1] - 35))
         pg.draw.rect(self.ecran, (255, 0, 0), self.rectangle_max)
-        pg.draw.rect(self.ecran, (0, 255, 50), pg.Rect(self.x_y[0], self.x_y[1], (self.pokemon.statVie / self.pokemon.statVieActuel * self.longueur), 20))
+        pg.draw.rect(self.ecran, (0, 255, 50), pg.Rect(self.x_y[0], self.x_y[1], (( self.pokemon.statVieActuel / self.pokemon.statVie) * self.longueur), 20))
 
