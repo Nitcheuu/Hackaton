@@ -2,7 +2,7 @@ from game import Game
 
 
 def main():
-    game = Game(1000, 590, 30)
+    game = Game(1000, 750, 30)
     game.demarrer()
 
 

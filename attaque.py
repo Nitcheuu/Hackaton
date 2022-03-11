@@ -2,10 +2,10 @@ import json
 
 
 class Attaque:
-    nomAttaque: str
-    type: str
-    attaque: int
-    precision: int
+    nomAttaque : str
+    type : str
+    attaque : int
+    precision : int
 
     def __init__(self, nom):
         dico = json.loads(f"data/moves/{nom}.json")
@@ -15,4 +15,3 @@ class Attaque:
             precision = 100
         else:
             precision = dico['accuracy']
-        nomAttaque:
